@@ -5,9 +5,9 @@ class List extends Component {
   render() {
     return (
       <div className="list">
-        {this.props.customers.map((customer, index) => (
+        {this.props.customers.map((customer) => (
           <Item
-            key={index}
+            key={customer.id}
             id={customer.id}
             name={customer.name}
             tag={customer.tag}

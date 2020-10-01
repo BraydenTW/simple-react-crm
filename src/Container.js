@@ -9,6 +9,7 @@ class Container extends Component {
       this.state = {
         customers: [
             {
+                id: uuidv4(),
                 name: "Brayden Wright",
                 tag: "Dev"
             }

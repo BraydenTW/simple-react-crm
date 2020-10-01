@@ -1,48 +1,38 @@
-import React, { Component } from 'react'
+import React, {useState} from 'react'
 import AddCustomer from './AddCustomer.js';
 import List from './List.js';
 import { v4 as uuidv4 } from "uuid";
 
-class Container extends Component {
-    constructor(props) {
-      super(props);
-      this.state = {
-        customers: [
-            {
-                id: uuidv4(),
-                name: "Brayden Wright",
-                tag: "Dev"
-            }
-        ]
-       };
+function Container() {
+  const [customers, setCustomers] = useState([{id: uuidv4(), name: "Brayden Wright", tag: "Dev"}]);
+
+  const addCustomer = (name, tag) => {
+    const newCustomer = {
+      id: uuidv4(),
+      name: name,
+      tag: tag
     }
-    addCustomer = (name, tag) => {
-        const newCustomer = {
-            id: uuidv4(),
-            name: name,
-            tag: tag
-        };
-        this.setState({
-            customers: [...this.state.customers, newCustomer]
-        });
-    };
-    delCustomer = id => {
-        this.setState({
-            customers: [
-                ...this.state.customers.filter(customer => {
-                    return customer.id !== id;
-                })
-            ]
-        });
-    };
-    render() {
-        return (
-            <div>
-                <AddCustomer addCustomer={this.addCustomer} />
-                <List customers={this.state.customers} delCustomer={this.delCustomer} />
-            </div>
-        )
-    }
+    setCustomers({
+      customers: [...customers, newCustomer]
+    })
+  }
+
+  const delCustomer = id => {
+    setCustomers({
+      customers: [
+        ...customers.filter(customer => {
+            return customer.id !== id;
+        })
+      ]
+    })
+  }
+  
+  return (
+    <div>
+      <AddCustomer addCustomer={addCustomer} />
+      <List customers={customers} delCustomer={delCustomer} />
+    </div>
+  )
 }
 
 export default Container;

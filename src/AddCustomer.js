@@ -46,7 +46,7 @@ class AddCustomer extends Component {
             onClick={this.onTagChange}
             required
           />
-          <label for="Dev">Dev</label>
+          <label htmlFor="Dev">Dev</label>
           <input
             type="radio"
             name="tag"
@@ -55,7 +55,7 @@ class AddCustomer extends Component {
             onClick={this.onTagChange}
             required
           />
-          <label for="Design">Design</label>
+          <label htmlFor="Design">Design</label>
         </div>
         <button>
           + Add Customer

@@ -7,6 +7,7 @@ class List extends Component {
       <div className="list">
         {this.props.customers.map(customer => (
           <Item
+            key={customer.id}
             id={customer.id}
             name={customer.name}
             tag={customer.tag}
